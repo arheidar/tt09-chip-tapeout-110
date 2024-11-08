@@ -22,7 +22,7 @@ module tt_um_idann (
   assign uio_oe  = 0;
 
   // List all unused inputs to prevent warnings
-  wire _unused = &{ena, uio_in,  1'b0};
+  wire _unused = &{ena, uio_in,  1'b0}; 
 
 // wire w0_i, w1_i, w2_i, w3_i;
 // assign w0_i = enable_signal_from_sm ? value_from_backpass : value_from_pytorch_init
