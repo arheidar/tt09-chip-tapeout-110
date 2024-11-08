@@ -18,7 +18,7 @@ reg [2:0] state_d, state_q;
 always @(posedge clk_i or negedge rst_i) begin
     if (!rst_i) begin
         state_q <= 3'b000;
-    end else (en_i) begin
+    end else if (en_i) begin
         state_q <= state_d;
     end
 end
