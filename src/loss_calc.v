@@ -12,7 +12,7 @@ module loss_calc
 //loss = (y-y')^2 ... calling the inside of the parantheses inner_fn
 wire [20:0] target_ext;
 reg [20:0] inner_fn;
-reg [41:0] loss_d, loss_q;
+reg [41:0] loss_d;
 
 assign target_ext = {17'b00000000000000000, target_i};
 
@@ -23,13 +23,13 @@ end
 
 always @(posedge clk_i or negedge rst_i) begin
     if (!rst_i) begin
-        loss_q <= 0; 
+        loss_o <= 0; 
     end else if (en_i) begin
-        loss_q <= loss_d;
+        loss_o <= loss_d;
     end
 end
 
-assign loss_o = loss_q;
+//assign loss_o = loss_q;
 
 
 endmodule 
