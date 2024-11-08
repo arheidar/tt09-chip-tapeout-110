@@ -1,5 +1,8 @@
 module loss_calc 
 (
+    input clk_i,
+    input rst_i,
+    input en_i,
     input [3:0] target_i,
     input [20:0] predicted_i,
     //not sure if this is right for bit size of loss_o

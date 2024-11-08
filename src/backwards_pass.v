@@ -4,7 +4,9 @@ module backwards_pass
     
 )
 
-//initial weight values
+
+//honestly just thug it out
+//oh also i think tmrw just do lfsr method 
 
 
 endmodule

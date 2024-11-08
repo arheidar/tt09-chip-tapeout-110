@@ -3,7 +3,7 @@ module lfsr
     input clk_i;
     input rst_i;
     input en_i;
-    //decided 16 bit lfsr for 65,535 cycles of "rand" data
+    //decided 16 bit lfsr for 65,535 cycles of "random" data
     //doing this since im assuming lfsr base back pass will need a large amount of epochs to converge
     output [15:0] lfsr_o;
 );

@@ -63,7 +63,7 @@ always @(posedge clk_i or negedge rst_i) begin
     if (!rst_i) begin
         hidden_neuron_q <= 0;
     end else if (en_i) begin
-        hidden_neuron_q <= hidden_neuron_q;
+        hidden_neuron_q <= hidden_neuron_d;
     end
 end
 
