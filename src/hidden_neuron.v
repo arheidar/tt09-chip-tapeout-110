@@ -53,7 +53,7 @@ always @(*) begin
     neuron_calc = wx3 + wx2 + wx1 + wx0;
 
     //ACTIVATION FUNCTION LOGIC (relu), considering my weights are 0 - 1 range, i wont have any negative numbers anyway tho lol
-    if (hidden_neuron_d <= 0) begin
+    if (neuron_calc <= 0) begin
         hidden_neuron_d = 0;
     end else begin
         hidden_neuron_d = neuron_calc;
