@@ -16,7 +16,7 @@ module hidden_neuron
 //make sure you handle bit sizes. fixed point is gonna be so ass 
 
 reg [7:0] wx3, wx2, wx1, wx0;
-reg [9:0] neuron_calc;
+//reg [9:0] neuron_calc;
 reg [9:0] hidden_neuron_d, hidden_neuron_q;
 
 always @(*) begin
@@ -49,14 +49,14 @@ always @(*) begin
         wx0 = 0;
     end
 
-    neuron_calc = wx3 + wx2 + wx1 + wx0;
+    hidden_neuron_d = wx3 + wx2 + wx1 + wx0;
 
     //ACTIVATION FUNCTION LOGIC (relu), considering my weights are 0 - 1 range, i wont have any negative numbers anyway tho lol
-    if (hidden_neuron_d <= 0) begin
-        hidden_neuron_d = 0;
-    end else begin
-        hidden_neuron_d = neuron_calc;
-    end
+    // if (hidden_neuron_d <= 0) begin
+    //     hidden_neuron_d = 0;
+    // end else begin
+    //     hidden_neuron_d = neuron_calc;
+    // end
 
 end
 

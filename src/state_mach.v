@@ -5,7 +5,7 @@ module state_mach
     //enable will just be ena from top module
     input en_i,
     input init_i,
-    input f1_end_i,
+    input f0_end_i,
     
 
     //reg?
@@ -30,18 +30,21 @@ always @(*) begin
         //init
         3'b000 : begin
             f0_pass_o = 0;
-            f1_pass_o
+            f1_pass_o = 0;
             b_pass_o = 0;
 
             if (init_i == 1'b1) begin
-                state_d = 3'b001
+                state_d = 3'b001;
             end
 
         end
         
         3'b001 : begin
+            f0_pass_o = 1;
+            f1_pass_o = 0;
+            b_pass_o = 0;
 
-
+            if (f0_end_i)
         end
 
         default: 3'b000;
