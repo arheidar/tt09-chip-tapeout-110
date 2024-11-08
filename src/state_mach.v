@@ -50,7 +50,9 @@ always @(*) begin
             end
         end
 
-        default: 3'b000;
+        default: begin
+            state_d = 3'b000;
+        end
     endcase
 
 end
