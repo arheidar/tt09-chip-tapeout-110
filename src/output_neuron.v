@@ -45,7 +45,7 @@ assign w1_ext = {2'b0, w1_i};
 // assign w7_ext = {2'b0, w7_i};
 
 always @(*) begin
-    final_d = (x0_i * w0_ext) + (x0_i * w0_ext);
+    final_d = (x0_i * w0_ext) + (x1_i * w1_ext);
 
     //sm logic to go to backpass
     // if (loss_check > 0) begin
