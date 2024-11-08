@@ -27,7 +27,7 @@ module tt_um_idann (
 // wire w0_i, w1_i, w2_i, w3_i;
 // assign w0_i = enable_signal_from_sm ? value_from_backpass : value_from_pytorch_init
 //assign w0_i 
-wire [9:0] hn0_o, hn1_o, hn2_o, hn3_o, hn4_o, hn5_o, hn6_o, hn7_o,;
+wire [9:0] hn0_o, hn1_o, hn2_o, hn3_o, hn4_o, hn5_o, hn6_o, hn7_o;
 wire [45:0] loss_o;
 wire [22:0] final_o;
 
