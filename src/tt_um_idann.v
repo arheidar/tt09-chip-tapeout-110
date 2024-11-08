@@ -36,7 +36,7 @@ hidden_neuron hn0 (.clk_i(clk), .rst_i(rst_n), .en_i(1), .x_i(4'hA), .w0_i(8'b1)
 
 hidden_neuron hn1 (.clk_i(clk), .rst_i(rst_n), .en_i(1), .x_i(4'hA), .w0_i(1), .w1_i(2), .w2_i(3), .w3_i(4), .hidden_neuron_o(hn1_o));
 
-output_neuron on0 (.clk_i(clk), .rst_i(rst_n), .en_i(1), .init_i(4'hA), .x0_i(hn0_o), .x1_i(hn1_o), .w0_i(5), w1_i(8), .loss_o(loss_val), .final_o(final_o));
+output_neuron on0 (.clk_i(clk), .rst_i(rst_n), .en_i(1), .init_i(4'hA), .x0_i(hn0_o), .x1_i(hn1_o), .w0_i(5), .w1_i(8), .loss_o(loss_val), .final_o(final_o));
 
 // wire [15:0] lfsr_top_o;
 
