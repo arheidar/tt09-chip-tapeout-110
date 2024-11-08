@@ -10,7 +10,7 @@ module state_mach
 
     //reg?
     output reg f0_pass_o,
-    output reg f1_pass_mux,
+    output reg f1_pass_o,
     output reg b_pass_o
 );
 
