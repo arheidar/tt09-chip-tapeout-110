@@ -6,8 +6,8 @@ module loss_calc
     input [3:0] target_i,
     input [20:0] predicted_i,
     //not sure if this is right for bit size of loss_o
-    output [41:0] loss_o;
-)
+    output [41:0] loss_o
+);
 
 //loss = (y-y')^2 ... calling the inside of the parantheses inner_fn
 wire [20:0] inner_fn, target_ext;
