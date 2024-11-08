@@ -7,26 +7,24 @@
         input [3:0] init_i,
         input [9:0] x0_i,
         input [9:0] x1_i,
-        // input [9:0] x2_i,
-        // input [9:0] x3_i,
-        // input [9:0] x4_i,
-        // input [9:0] x5_i,
-        // input [9:0] x6_i,
-        // input [9:0] x7_i,
-        // input [8:0] x8_i,
+        input [9:0] x2_i,
+        input [9:0] x3_i,
+        input [9:0] x4_i,
+        input [9:0] x5_i,
+        input [9:0] x6_i,
+        input [9:0] x7_i,
         //7:0 is fixed point: 1.7 form for interpretaion 
         input [7:0] w0_i,
         input [7:0] w1_i,
-        // input [7:0] w2_i,
-        // input [7:0] w3_i,
-        // input [7:0] w4_i,
-        // input [7:0] w5_i,
-        // input [7:0] w6_i,
-        // input [7:0] w7_i,
-        // input [7:0] w8_i,
+        input [7:0] w2_i,
+        input [7:0] w3_i,
+        input [7:0] w4_i,
+        input [7:0] w5_i,
+        input [7:0] w6_i,
+        input [7:0] w7_i,
         //output fwrd_done_o,
-        output [41:0] loss_o,
-        output reg [20:0] final_o
+        output [45:0] loss_o,
+        output reg [22:0] final_o
     );
 
 wire [9:0] w0_ext, w1_ext;
@@ -37,15 +35,15 @@ reg [20:0] final_d, final_q;
 //unsure if yosys will zero extend when i do multiplication, so im doing this to be safe 
 assign w0_ext = {2'b0, w0_i};
 assign w1_ext = {2'b0, w1_i};
-// assign w2_ext = {2'b0, w2_i};
-// assign w3_ext = {2'b0, w3_i};
-// assign w4_ext = {2'b0, w4_i};
-// assign w5_ext = {2'b0, w5_i};
-// assign w6_ext = {2'b0, w6_i};
-// assign w7_ext = {2'b0, w7_i};
+assign w2_ext = {2'b0, w2_i};
+assign w3_ext = {2'b0, w3_i};
+assign w4_ext = {2'b0, w4_i};
+assign w5_ext = {2'b0, w5_i};
+assign w6_ext = {2'b0, w6_i};
+assign w7_ext = {2'b0, w7_i};
 
 always @(*) begin
-    final_d = (x0_i * w0_ext) + (x1_i * w1_ext);
+    final_d = (x0_i * w0_ext) + (x1_i * w1_ext) +  (x2_i * w2_ext) + (x3_i * w3_ext) +  (x4_i * w4_ext) + (x5_i * w5_ext) + (x6_i * w6_ext) + (x7_i * w7_ext); 
 
     //sm logic to go to backpass
     // if (loss_check > 0) begin

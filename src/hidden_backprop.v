@@ -1,18 +1,14 @@
-module hidden_backwards_pass
+module hidden_backprop
 (
     input target_i,
     input en_i,
-    //do these need to be reg?
-    output hw0_o,
-    output hw1_o,
-    output hw2_o,
-    output hw3_o,
-    output hw4_o,
-    output hw5_o,
-    output hw6_o,
-    output hw7_o,
-    output ow0_o,
-    output ow1_o    
+
+    
+    input [7:0] w0_i, 
+    input [7:0] w1_i, 
+    input [7:0] w2_i, 
+    input [7:0] w3_i, 
+
 );
 
 

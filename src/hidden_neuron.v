@@ -9,7 +9,8 @@ module hidden_neuron
     input [7:0] w0_i, 
     input [7:0] w1_i, 
     input [7:0] w2_i, 
-    input [7:0] w3_i, 
+    input [7:0] w3_i,   
+    //3.7
     output reg [9:0] hidden_neuron_o
 );
 
