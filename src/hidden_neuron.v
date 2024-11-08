@@ -16,7 +16,8 @@ module hidden_neuron
 //make sure you handle bit sizes. fixed point is gonna be so ass 
 
 wire [7:0] wx3, wx2, wx1, wx0;
-wire [9:0] neuron_calc, hidden_neuron_d, hidden_neuron_q;
+wire [9:0] neuron_calc;
+reg [9:0] hidden_neuron_d, hidden_neuron_q;
 
 always @(*) begin
     wx3 = 0;

@@ -26,13 +26,23 @@ module tt_um_idann (
 
 // wire w0_i, w1_i, w2_i, w3_i;
 // assign w0_i = enable_signal_from_sm ? value_from_backpass : value_from_pytorch_init
-//hidden_neuron hn3 (.clk_i(clk), .rst_i(rst), .en_i(), .x_i(4'hA), .w0_i(), .w1_i(), .w2_i(), .w3_i(), .hidden_neuron_o());
+//assign w0_i 
+wire [9:0] hn0_o, hn1_o;
+wire [41:0] loss_val_o;
+wire [20:0] final_o;
 
-wire [15:0] lfsr_top_o;
 
-lfsr lfsr_test (.clk_i(clk), .rst_i(rst_n), .en_i(1'b1), .lfsr_o(lfsr_top_o));
+hidden_neuron hn0 (.clk_i(clk), .rst_i(rst_n), .en_i(1), .x_i(4'hA), .w0_i(8'b1), .w1_i(8'b2), .w2_i(8'b3), .w3_i(8'b4), .hidden_neuron_o(hn0_o));
 
-assign uo_out = lfsr_top_o[7:0];
+hidden_neuron hn1 (.clk_i(clk), .rst_i(rst_n), .en_i(1), .x_i(4'hA), .w0_i(8'b1), .w1_i(8'b2), .w2_i(8'b3), .w3_i(8'b4), .hidden_neuron_o(hn1_o));
+
+output_neuron on0 (.clk_i(clk), .rst_i(rst_n), .en_i(1), .init_i(4'hA), .x0_i(hn0_o), .x1_i(hn1_o), .w0_i(8'b5), w1_i(8'b8), .loss_o(loss_val), .final_o(final_o));
+
+// wire [15:0] lfsr_top_o;
+
+// lfsr lfsr_test (.clk_i(clk), .rst_i(rst_n), .en_i(1'b1), .lfsr_o(lfsr_top_o));
+
+assign uo_out = final_o[7:0];
 
 
 endmodule
