@@ -42,7 +42,7 @@ output_neuron on0 (.clk_i(clk), .rst_i(rst_n), .en_i(1), .init_i(4'hA), .x0_i(hn
 
 // lfsr lfsr_test (.clk_i(clk), .rst_i(rst_n), .en_i(1'b1), .lfsr_o(lfsr_top_o));
 
-assign uo_out = {&{loss[41:0]}, final_o[6:0]};
+assign uo_out = {&{loss_o[41:0]}, final_o[6:0]};
 
 
 endmodule
