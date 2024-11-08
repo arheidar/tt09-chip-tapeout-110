@@ -5,10 +5,11 @@ module lfsr
     input en_i,
     //decided 16 bit lfsr for 65,535 cycles of "random" data
     //doing this since im assuming lfsr base back pass will need a large amount of epochs to converge
-    output [15:0] lfsr_o
+    output reg [15:0] lfsr_o
 );
 
-wire [15:0] rand_d, rand_q;
+wire [15:0] rand_d;
+reg [15:0] rand_q;
 
 assign rand_d[0] = rand_q[1] ^ rand_q[2] ^ rand_q[4] ^ rand_q[15];
 assign rand_d[15:1] = rand_q[14:0];
