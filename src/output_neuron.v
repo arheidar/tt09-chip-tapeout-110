@@ -4,7 +4,7 @@
         input rst_i,
         input en_i,
         //9:0 is fixed point but im not sure what . shit yet ill figure out how to interpret it later
-        input [3:0] init_i
+        input [3:0] init_i,
         input [9:0] x0_i,
         input [9:0] x1_i,
         // input [9:0] x2_i,
@@ -32,7 +32,7 @@
 wire [9:0] w0_ext, w1_ext;
 // , w2_ext, w3_ext, w4_ext, w5_ext, w6_ext, w7_ext;
 //idk if 21 bits is right, maybe ask jason
-reg [20:0] final_d final_q; 
+reg [20:0] final_d, final_q; 
 
 //unsure if yosys will zero extend when i do multiplication, so im doing this to be safe 
 assign w0_ext = {2'b0, w0_i};
