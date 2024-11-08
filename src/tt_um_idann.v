@@ -31,7 +31,7 @@ wire [9:0] hn0_o, hn1_o;
 wire [41:0] loss_o;
 wire [20:0] final_o;
 
-
+//assign w0_i = (f1_mux0) ? 1 : backwards_pass;
 hidden_neuron hn0 (.clk_i(clk), .rst_i(rst_n), .en_i(1), .x_i(4'hA), .w0_i(8'b1), .w1_i(2), .w2_i(3), .w3_i(4), .hidden_neuron_o(hn0_o));
 
 hidden_neuron hn1 (.clk_i(clk), .rst_i(rst_n), .en_i(1), .x_i(4'hA), .w0_i(1), .w1_i(2), .w2_i(3), .w3_i(4), .hidden_neuron_o(hn1_o));
