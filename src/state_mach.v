@@ -16,7 +16,7 @@ module state_mach
 
 reg [2:0] state_d, state_q;
 always @(posedge clk_i or negedge rst_i) begin
-    if (!rst_ni) begin
+    if (!rst_i) begin
         state_q <= 3'b000;
     end else (en_i) begin
         state_q <= state_d;
@@ -45,7 +45,7 @@ always @(*) begin
             f1_pass_o = 0;
             b_pass_o = 0;
 
-            if (f0_end_i) begin
+            if (f0_end_i == 1'b1) begin
                 state_d = 3'b010;
             end
         end
