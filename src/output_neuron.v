@@ -27,10 +27,9 @@
         output reg [22:0] final_o
     );
 
-wire [9:0] w0_ext, w1_ext;
-// , w2_ext, w3_ext, w4_ext, w5_ext, w6_ext, w7_ext;
+wire [9:0] w0_ext, w1_ext, w2_ext, w3_ext, w4_ext, w5_ext, w6_ext, w7_ext;
 //idk if 21 bits is right, maybe ask jason
-reg [20:0] final_d, final_q; 
+reg [22:0] final_d, final_q; 
 
 //unsure if yosys will zero extend when i do multiplication, so im doing this to be safe 
 assign w0_ext = {2'b0, w0_i};
