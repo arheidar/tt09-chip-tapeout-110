@@ -86,6 +86,7 @@ always @(posedge clk_i or negedge rst_i) begin
     end
 end
 
+
 //tmrw figure out timing for how to do loss stuff. is way im doing it even gonna work lol
 
 //wire [45:0] loss_check;
