@@ -35,7 +35,7 @@ wire b_end0_o, b_end1_o;
 wire b_h_end0_o, b_h_end1_o;
 //b_end1_o, b_end2_o, b_end3_o, b_end4_o, b_end5_o, b_end6_o, b_end7_o;
 wire [15:0] on_weights_o;
-wire [31:0] hn0_weights_o, hn1_weights_0;
+wire [31:0] hn0_weights_o, hn1_weights_o;
 //assign w0_i = (f1p_o) ? 1 :;
 
 //state_mach sm0 (.clk_i(clk), .rst_i(rst_n), .en_i(1), .init_i(ui_in[7]), .f_end_i(1'b0), .f0_pass_o(f0p_o), .f1_pass_o(f1p_o), .b_pass_o(bp_o));
