@@ -3,6 +3,7 @@
         input clk_i,
         input rst_i,
         input en_i,
+        //input f0_pass_i,
         //9:0 is fixed point but im not sure what . shit yet ill figure out how to interpret it later
         input [3:0] init_i,
         input [9:0] x0_i,
@@ -23,7 +24,9 @@
         input [7:0] w6_i,
         input [7:0] w7_i,
         //output fwrd_done_o,
-        output [45:0] loss_o,
+        //output f0_end_o, 
+        //output f1_end_o,
+        output reg  [45:0] loss_o,
         output reg [22:0] final_o
     );
 
@@ -44,9 +47,13 @@ assign w7_ext = {2'b0, w7_i};
 always @(*) begin
     final_d = (x0_i * w0_ext) + (x1_i * w1_ext) +  (x2_i * w2_ext) + (x3_i * w3_ext) +  (x4_i * w4_ext) + (x5_i * w5_ext) + (x6_i * w6_ext) + (x7_i * w7_ext); 
     
-    //sm logic to go to backpass
-    // if (loss_check > 0) begin
-        
+    // if ((loss_o > 0) && (f0_pass_i == 1)) begin
+    //     f0_end_o = 1;
+    // end else if ((loss_o == 0) && (f1_pass_i == 1))
+    //     f1_end_o = 1;
+    // else begin
+    //     f0_end_o = 0;
+    //     f1_end_o = 0;
     // end
 end
 
@@ -62,7 +69,7 @@ assign final_o = final_q;
 
 //tmrw figure out timing for how to do loss stuff. is way im doing it even gonna work lol
 
-//wire [41:0] loss_check;
+//wire [45:0] loss_check;
 loss_calc mse_fn (.clk_i(clk_i), .rst_i(rst_i), .en_i (en_i), .target_i(init_i), .predicted_i(final_q), .loss_o(loss_o));
 
 

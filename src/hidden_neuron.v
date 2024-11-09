@@ -28,25 +28,25 @@ always @(*) begin
     wx1 = 0;
     wx0 = 0;
 
-    if (x_i[3] == 1) begin
+    if (x_i[3] == 1'b1) begin
         wx3 = w3_i; 
     end else begin
         wx3 = 0;
     end
 
-    if (x_i[2] == 1) begin
+    if (x_i[2] == 1'b1) begin
         wx2 = w2_i; 
     end else begin
         wx2 = 0;
     end
 
-    if (x_i[1] == 1) begin
+    if (x_i[1] == 1'b1) begin
         wx1 = w1_i; 
     end else begin
         wx1 = 0;
     end
 
-    if (x_i[0] == 1) begin
+    if (x_i[0] == 1'b1) begin
         wx0 = w0_i; 
     end else begin
         wx0 = 0;

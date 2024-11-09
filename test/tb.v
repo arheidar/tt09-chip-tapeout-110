@@ -46,4 +46,25 @@ module tb ();
       .rst_n  (rst_n)     // not reset
   );
 
+  // initial begin 
+  //   forever begin
+  //   clk = 0;
+  //   #20 clk = ~clk;
+  //   end
+  // end
+
+//  initial begin
+//     clk = 0;
+//     ui_in = {4'b0000, 4'b1000}; 
+//     uio_in = '0; 
+//     rst_n = 0;
+//     #(1000) 
+//     rst_n = 1;
+//     #(1000)
+//     ui_in = {4'b1000, 4'b1000}; 
+
+
+//     #(1000000000);
+//     $finish;
+//   end 
 endmodule
