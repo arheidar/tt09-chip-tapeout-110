@@ -63,7 +63,7 @@ always @(*) begin
 
 end
 
-always @(posedge clk_i or negedge rst_i) begin 
+always @(posedge clk_i) begin 
     if (!rst_i) begin
         hidden_neuron_q <= 0;
     end else if (en_i) begin

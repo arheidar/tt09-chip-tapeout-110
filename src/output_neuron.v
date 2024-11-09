@@ -63,7 +63,7 @@ always @(*) begin
     // end
 end
 
-always @(posedge clk_i or negedge rst_i) begin
+always @(posedge clk_i) begin
     if (!rst_i || zero_final_i) begin
         final_q <= 0; 
     end else if (en_i) begin
@@ -88,7 +88,7 @@ always @(*) begin
     loss_d = inner_fn * inner_fn;
 end
 
-always @(posedge clk_i or negedge rst_i) begin
+always @(posedge clk_i) begin
     if (!rst_i || zero_loss_i) begin
         loss_o <= 0; 
     end else if (en_i && ((final_q != 0) && (init_i != 0))) begin
@@ -99,7 +99,7 @@ end
 assign fpass_over_o = ((loss_o > 0) && (en_i)) ? 1'b1 : 1'b0;
 
 //weight outputs for bp calc
-always @(posedge clk_i or negedge rst_i) begin
+always @(posedge clk_i) begin
     if (!rst_i) begin
         weights_o <= 0; 
     end else if (en_i) begin

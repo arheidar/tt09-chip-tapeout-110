@@ -21,7 +21,7 @@ module state_mach
 reg zero_loss_temp, zero_final_temp, zero_weight_update_temp, f0_pass_temp, f1_pass_temp, b_pass_temp;
 
 reg [2:0] state_d, state_q;
-always @(posedge clk_i or negedge rst_i) begin
+always @(posedge clk_i) begin
     if (!rst_i) begin
         state_q <= 3'b000;
     end else if (en_i) begin

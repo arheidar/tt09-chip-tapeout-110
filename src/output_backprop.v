@@ -34,7 +34,7 @@ always@(*) begin
     w_update_d = {34'b0, w_i} - (lr_mult); 
 end
 
-always @(posedge clk_i or negedge rst_i) begin
+always @(posedge clk_i) begin
     if (!rst_i || zero_weight_reset_i) begin
         w_update_q <= 0; 
     end else if (en_i) begin
