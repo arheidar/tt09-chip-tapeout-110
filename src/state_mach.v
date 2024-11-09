@@ -33,6 +33,10 @@ always @(*) begin
     zero_loss_o = 0;
     zero_final_o = 0;
     zero_weight_update_o = 0;
+    f0_pass_o = 0;
+    f1_pass_o = 0;
+    b_pass_o = 0;
+
 
     case (state_q)
         //init
