@@ -18,7 +18,7 @@ module output_backprop
 
 wire [22:0] x_ext;
 //reg [23:0] gradient, w_update_d; 
-reg [33:0] gradient, 
+reg [33:0] gradient;
 reg [41:0] w_update_d; 
 //extra id bit
 reg [42:0] w_update_q;

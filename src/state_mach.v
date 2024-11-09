@@ -82,7 +82,7 @@ always @(*) begin
                 zero_weight_update_o = 1;
                 state_d = 3'b010;
             end else if (zero_end_check_i) begin
-                state_d = 3'b1000;
+                state_d = 3'b100;
             end
         end
         
