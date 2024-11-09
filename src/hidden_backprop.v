@@ -40,20 +40,20 @@ always@(*) begin
     end
 
     if ((x_i[1] == 1'b1) || (hidden_val_i !=0)) begin
-        w1_updated_d = w1_i - (gradient * hidden_val_i * 8'b00000010)
+        w1_updated_d = w1_i - (gradient * hidden_val_i * 8'b00000010);
     end else begin
         w1_updated_d = 0;
     end
 
        if ((x_i[2] == 1'b1) || (hidden_val_i !=0)) begin
-        w2_updated_d = w2_i - (gradient * hidden_val_i * 8'b00000010)
+        w2_updated_d = w2_i - (gradient * hidden_val_i * 8'b00000010);
     end else begin
         w2_updated_d = 0;
     end
     
 
        if ((x_i[3] == 1'b1) || (hidden_val_i !=0)) begin
-        w3_updated_d = w3_i - (gradient * hidden_val_i * 8'b00000010)
+        w3_updated_d = w3_i - (gradient * hidden_val_i * 8'b00000010);
     end else begin
         w3_updated_d = 0;
     end
