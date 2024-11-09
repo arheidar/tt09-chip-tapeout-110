@@ -7,7 +7,7 @@ module output_backprop
     input en_i,
     input rst_i,
     input [3:0] x_i,  
-    input [22:0] final_i,
+    input [18:0] final_i,
     input [9:0] hidden_val_i,
     input [7:0] w_i, 
     input zero_weight_reset_i,
@@ -16,22 +16,22 @@ module output_backprop
     //output trash_handling
 );
 
-wire [22:0] x_ext;
-reg [23:0] gradient0;
-reg [33:0] gradient1;
-reg [41:0] lr_mult;
-reg [41:0] w_update_d; 
+wire [18:0] x_ext;
+reg [19:0] gradient0;
+reg [29:0] gradient1;
+reg [37:0] lr_mult;
+reg [37:0] w_update_d; 
 //extra id bit
 reg [8:0] w_update_q;
 
-assign x_ext = {19'b0000000000000000000, x_i};
+assign x_ext = {15'b0000000000000000000, x_i};
 //might just change this to be a backwards pass implemented in each neuron but idk yet
 always@(*) begin 
     //assign gradient = 2(x_i _) * h
-    gradient0 = (2 * (x_ext - final_i));
+    gradient0 = ((x_ext - final_i) << 1 );
     gradient1 = gradient0 * hidden_val_i;
     lr_mult = (8'b00000010 * gradient1); 
-    w_update_d = {34'b0, w_i} - (lr_mult); 
+    w_update_d = {30'b0, w_i} - (lr_mult); 
 end
 
 //one extra bit as an identifier
