@@ -16,8 +16,8 @@ module output_backprop
 );
 
 wire [22:0] x_ext;
-//reg [23:0] gradient, w_update_d; 
-reg [33:0] gradient;
+reg [23:0] gradient0;
+reg [33:0] gradient1;
 reg [41:0] w_update_d; 
 //extra id bit
 reg [42:0] w_update_q;
@@ -26,8 +26,10 @@ assign x_ext = {19'b0000000000000000000, x_i};
 //might just change this to be a backwards pass implemented in each neuron but idk yet
 always@(*) begin 
     //assign gradient = 2(x_i _) * h
-    gradient = (2 * (x_ext - final_i)) * (hidden_val_i);
-    w_update_d = {38'b0, w_i} - (8'b00000010 * gradient); 
+    gradient0 = (2 * (x_ext - final_i));
+    gradient1 = gradient0 * hidden_val_i;
+
+    w_update_d = {38'b0, w_i} - (8'b00000010 * gradient1); 
 end
 
 always @(posedge clk_i or negedge rst_i) begin
