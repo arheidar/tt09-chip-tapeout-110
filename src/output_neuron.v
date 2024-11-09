@@ -67,10 +67,29 @@ end
 
 assign final_o = final_q;
 
+wire [22:0] target_ext;
+reg [22:0] inner_fn;
+reg [45:0] loss_d;
+
+assign target_ext = {19'b00000000000000000, init_i};
+
+always @(*) begin
+    inner_fn = (final_d - target_ext);
+    loss_d = inner_fn * inner_fn;
+end
+
+always @(posedge clk_i or negedge rst_i) begin
+    if (!rst_i) begin
+        loss_o <= 0; 
+    end else if (en_i) begin
+        loss_o <= loss_d;
+    end
+end
+
 //tmrw figure out timing for how to do loss stuff. is way im doing it even gonna work lol
 
 //wire [45:0] loss_check;
-loss_calc mse_fn (.clk_i(clk_i), .rst_i(rst_i), .en_i (en_i), .target_i(init_i), .predicted_i(final_q), .loss_o(loss_o));
+//loss_calc mse_fn (.clk_i(clk_i), .rst_i(rst_i), .en_i (en_i), .target_i(init_i), .predicted_i(final_q), .loss_o(loss_o));
 
 
 endmodule
