@@ -20,8 +20,8 @@ project:
     - "tt_um_idann.v"
     - "hidden_neuron.v"
     - "output_neuron.v"
-    - "loss_calc.v"
     - "state_mach.v"
+    - "output_backprop.v"
 
 # The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
 pinout:

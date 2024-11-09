@@ -5,10 +5,15 @@ module state_mach
     //enable will just be ena from top module
     input en_i,
     input init_i,
-    input f0_end_i,
+    input f_end_i,
+    input b_end_i,
+    input zero_end_check_i,
     
 
     //reg?
+    output reg zero_loss_o,
+    output reg zero_final_o,
+    output reg zero_weight_update_o,
     output reg f0_pass_o,
     output reg f1_pass_o,
     output reg b_pass_o
@@ -25,6 +30,9 @@ end
 
 always @(*) begin
     state_d = state_q;
+    zero_loss_o = 0;
+    final_loss_o = 0;
+    zero_weight_update_o = 0;
 
     case (state_q)
         //init
@@ -45,9 +53,44 @@ always @(*) begin
             f1_pass_o = 0;
             b_pass_o = 0;
 
-            if (f0_end_i == 1'b1) begin
+            if (f_end_i == 1'b1) begin
                 state_d = 3'b010;
             end
+        end
+
+        //b pass
+        3'b010 : begin
+            f0_pass_o = 0;
+            f1_pass_o = 0;
+            b_pass_o = 1;
+
+            if (b_end_i == 1'b1) begin
+                //need to zero loss and final_o 
+                zero_loss_o = 1;
+                zero_final_o = 1;
+                state_d = 3'b011;
+            end
+        end
+
+        //f1 pass
+        3'b011 : begin
+            f0_pass_o = 0;
+            f1_pass_o = 1;
+            b_pass_o = 0;
+
+            if (f_end_i == 1'b1) begin
+                zero_weight_update_o = 1;
+                state_d = 3'b010;
+            end else if (zero_end_check_i) begin
+                state_d = 3'b1000;
+            end
+        end
+        
+        //end 
+         3'b100 : begin
+            f0_pass_o = 0;
+            f1_pass_o = 0;
+            b_pass_o = 0;
         end
 
         default: begin
