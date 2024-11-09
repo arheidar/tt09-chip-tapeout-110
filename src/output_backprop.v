@@ -25,7 +25,7 @@ reg [37:0] w_update_d;
 reg [8:0] w_update_q;
 
 assign x_ext = {15'b0000000000000000000, x_i};
-//might just change this to be a backwards pass implemented in each neuron but idk yet
+//PRETTY SURE I NEED TO SWITCH IT FROM X - FINAL to FINAL - X
 always@(*) begin 
     //assign gradient = 2(x_i _) * h
     gradient0 = ((x_ext - final_i) << 1 );

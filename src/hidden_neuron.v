@@ -12,6 +12,7 @@ module hidden_neuron
     input [7:0] w3_i,   
     //3.7
     output reg [9:0] hidden_neuron_o
+    output reg [31:0] weights_o
 );
 
 //make sure you handle bit sizes. fixed point is gonna be so ass 
@@ -73,6 +74,13 @@ end
 
 assign hidden_neuron_o = hidden_neuron_q;
 
+always @(posedge clk_i) begin
+    if (!rst_i) begin
+        weights_o <= 0; 
+    end else if (en_i) begin
+        weights_o <= {w3_i, w2_i, w1_i, w0_i}; 
+    end
+end 
 
 
 
