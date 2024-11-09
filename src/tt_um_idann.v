@@ -54,7 +54,7 @@ hidden_neuron hn7 (.clk_i(clk), .rst_i(rst_n), .en_i(f0p_o), .x_i(ui_in[3:0]), .
 
 output_neuron on0 (.clk_i(clk), .rst_i(rst_n), .en_i(f0p_o), .f0_pass_i(f0p_o), .init_i(ui_in[3:0]), .x0_i(hn0_o), .x1_i(hn1_o), .x2_i(hn2_o), .x3_i(hn3_o), .x4_i(hn4_o), .x5_i(hn5_o), .x6_i(hn6_o), .x7_i(hn7_o), .w0_i(1), .w1_i(2), .w2_i(3), .w3_i(4), .w4_i(5), .w5_i(6), .w6_i(7), .w7_i(8), .loss_o(loss_o), .final_o(final_o));
 
-
+ 
 
 
 //output_neuron on0 (.clk_i(clk), .rst_i(rst_n), .en_i(1), .init_i(4'hA), .x0_i(hn0_o), .x1_i(hn1_o), .w0_i(5), .w1_i(8), .loss_o(loss_o), .final_o(final_o));
