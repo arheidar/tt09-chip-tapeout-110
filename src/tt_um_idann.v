@@ -32,7 +32,7 @@ wire [45:0] loss_o;
 wire [22:0] final_o;
 wire f0p_o, f1p_o, bp_o, fpass_over_o, zero_loss_o, zero_final_o, zero_weight_update_o, zero_end_check_o;
 wire b_end0_o, b_end1_o, b_end2_o, b_end3_o, b_end4_o, b_end5_o, b_end6_o, b_end7_o, 
-wire on_weights_o;
+wire [55:0] on_weights_o;
 //assign w0_i = (f1p_o) ? 1 :;
 
 //state_mach sm0 (.clk_i(clk), .rst_i(rst_n), .en_i(1), .init_i(ui_in[7]), .f_end_i(1'b0), .f0_pass_o(f0p_o), .f1_pass_o(f1p_o), .b_pass_o(bp_o));
