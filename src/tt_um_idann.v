@@ -61,7 +61,7 @@ output_neuron on0(.clk_i(clk), .rst_i(rst_n), .en_i(f0p_o | f1p_o), .zero_loss_i
 //backprop hidden-to-out weight0
 wire [7:0] w0_on_i, w0_on_backprop_o;
 assign w0_on_i = (f0p_o) ? 1 : w0_on_backprop_o; 
-output_backprop obp1 (.clk_i(clk), .en_i(bp_o), .rst_i(rst_n), .final_i(final_o), .x_i(ui_in[3:0]), .hidden_val_i(hn0_o), .w_i(on_weights_o[7:0]), .zero_weight_reset_i(zero_weight_update_o), .w_o(w0_on_backprop_o), .b_end_o(b_end0_o));
+output_backprop obp1 (.clk_i(clk), .en_i(bp_o), .rst_i(rst_n), .final_i(final_o), .x_i(ui_in[3:0]), .hidden_val_i(hn0_o), .w_i(on_weights_o[7:0]), .zero_weight_reset_i(zero_weight_update_o), .w_o(w0_on_backprop_o), .b_end_o(b_end0_o), .trash_handling(trash_handling));
 
 //backprop hidden-to-out weight1
 // wire [7:0] w1_on_i, w1_on_backprop_o;
@@ -79,8 +79,8 @@ output_backprop obp1 (.clk_i(clk), .en_i(bp_o), .rst_i(rst_n), .final_i(final_o)
 // wire [15:0] lfsr_top_o;
 
 // lfsr lfsr_test (.clk_i(clk), .rst_i(rst_n), .en_i(1'b1), .lfsr_o(lfsr_top_o));
-
-assign uo_out = {&{loss_o[45:0]}, &{f0p_o, f1p_o, bp_o}, &{on_weights_o[63:8]}, final_o[4:0]};
+wire trash_handling;
+assign uo_out = {&{loss_o[45:0]}, &{f0p_o, f1p_o, bp_o}, &{on_weights_o[63:8]}, trash_handling, final_o[3:0]};
 
 
 endmodule
