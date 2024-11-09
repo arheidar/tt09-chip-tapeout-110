@@ -12,7 +12,8 @@ module output_backprop
     input [7:0] w_i, 
     input zero_weight_reset_i,
     output [7:0] w_o,
-    output b_end_o
+    output b_end_o,
+    output trash_handling
 );
 
 wire [22:0] x_ext;
@@ -42,6 +43,9 @@ always @(posedge clk_i or negedge rst_i) begin
 end
 
 assign b_end_o = (w_update_q[42]) ? 1'b1 : 0;
+
+assign trash_handling = &{w_update_q[41:30], w_update_q[21:0]};
+
 
 assign w_o = w_update_q[29:22]; 
 

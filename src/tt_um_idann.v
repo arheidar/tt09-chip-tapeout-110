@@ -80,7 +80,7 @@ output_backprop obp1 (.clk_i(clk), .en_i(bp_o), .rst_i(rst_n), .final_i(final_o)
 
 // lfsr lfsr_test (.clk_i(clk), .rst_i(rst_n), .en_i(1'b1), .lfsr_o(lfsr_top_o));
 
-assign uo_out = {&{loss_o[45:0]}, &{f0p_o, f1p_o, bp_o}, final_o[5:0]};
+assign uo_out = {&{loss_o[45:0]}, &{f0p_o, f1p_o, bp_o}, &{on_weights_o[63:8]}, final_o[4:0]};
 
 
 endmodule
