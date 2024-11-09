@@ -38,7 +38,7 @@ always @(posedge clk_i or negedge rst_i) begin
     end
 end
 
-assign b_end_o = (w_update_q[43]) ? 1'b1 : 0;
+assign b_end_o = (w_update_q[42]) ? 1'b1 : 0;
 
 assign w_o = w_update_q[29:22]; 
 

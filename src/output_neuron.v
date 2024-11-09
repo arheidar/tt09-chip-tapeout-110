@@ -33,7 +33,7 @@
         output reg [22:0] final_o,
         output fpass_over_o,
         output zero_end_check_o,
-        output reg [55:0] weights_o
+        output reg [63:0] weights_o
     );
 
 wire [9:0] w0_ext, w1_ext, w2_ext, w3_ext, w4_ext, w5_ext, w6_ext, w7_ext;
