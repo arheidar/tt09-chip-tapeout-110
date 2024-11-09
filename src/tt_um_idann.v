@@ -49,14 +49,14 @@ assign w0_hn0_i = (f0p_o) ? 1 : w0_hn0_backprop_o;
 assign w1_hn0_i = (f0p_o) ? 2 : w1_hn0_backprop_o; 
 assign w2_hn0_i = (f0p_o) ? 3 : w2_hn0_backprop_o; 
 assign w3_hn0_i = (f0p_o) ? 4 : w3_hn0_backprop_o; 
-hidden_backprop hbp0 (.clk_i(clk), .rst_i(rst_n), .en_i(bp_o), .final_i(final_o), .x_i(ui_in[3:0]), .hidden_val_i(hn0_o), .w0_i(hn0_weights_o[7:0]), .w1_i(hn0_weights_o[15:8]), .w2_i(hn0_weights_o[23:16]), .w3_i(hn0_weights_o[31:17]), .zero_weight_reset_i(zero_weight_update_o), .w0_o(w0_hn0_backprop_o), .w1_o(w1_hn0_backprop_o), .w2_o(w2_hn0_backprop_o), .w3_o(w3_hn0_backprop_o), .b_end_o(b_h_end0_o));
+hidden_backprop hbp0 (.clk_i(clk), .rst_i(rst_n), .en_i(bp_o), .final_i(final_o), .x_i(ui_in[3:0]), .hidden_val_i(hn0_o), .w0_i(hn0_weights_o[7:0]), .w1_i(hn0_weights_o[15:8]), .w2_i(hn0_weights_o[23:16]), .w3_i(hn0_weights_o[31:24]), .zero_weight_reset_i(zero_weight_update_o), .w0_o(w0_hn0_backprop_o), .w1_o(w1_hn0_backprop_o), .w2_o(w2_hn0_backprop_o), .w3_o(w3_hn0_backprop_o), .b_end_o(b_h_end0_o));
 
 wire [7:0] w0_hn1_i, w0_hn1_backprop_o, w1_hn1_i, w1_hn1_backprop_o, w2_hn1_i, w2_hn1_backprop_o, w3_hn1_i, w3_hn1_backprop_o;
 assign w0_hn1_i = (f0p_o) ? 1 : w0_hn1_backprop_o;  
 assign w1_hn1_i = (f0p_o) ? 2 : w1_hn1_backprop_o; 
 assign w2_hn1_i = (f0p_o) ? 3 : w2_hn1_backprop_o; 
 assign w3_hn1_i = (f0p_o) ? 4 : w3_hn1_backprop_o; 
-hidden_backprop hbp1 (.clk_i(clk), .rst_i(rst_n), .en_i(bp_o), .final_i(final_o), .x_i(ui_in[3:0]), .hidden_val_i(hn1_o), .w0_i(hn1_weights_o[7:0]), .w1_i(hn1_weights_o[15:8]), .w2_i(hn1_weights_o[23:16]), .w3_i(hn1_weights_o[31:17]), .zero_weight_reset_i(zero_weight_update_o), .w0_o(w0_hn0_backprop_o), .w1_o(w1_hn0_backprop_o), .w2_o(w2_hn0_backprop_o), .w3_o(w3_hn0_backprop_o), .b_end_o(b_h_end1_o));
+hidden_backprop hbp1 (.clk_i(clk), .rst_i(rst_n), .en_i(bp_o), .final_i(final_o), .x_i(ui_in[3:0]), .hidden_val_i(hn1_o), .w0_i(hn1_weights_o[7:0]), .w1_i(hn1_weights_o[15:8]), .w2_i(hn1_weights_o[23:16]), .w3_i(hn1_weights_o[31:24]), .zero_weight_reset_i(zero_weight_update_o), .w0_o(w0_hn0_backprop_o), .w1_o(w1_hn0_backprop_o), .w2_o(w2_hn0_backprop_o), .w3_o(w3_hn0_backprop_o), .b_end_o(b_h_end1_o));
 
 // hidden_neuron hn2 (.clk_i(clk), .rst_i(rst_n), .en_i(f0p_o | f1p_o), .x_i(ui_in[3:0]), .w0_i(1), .w1_i(2), .w2_i(3), .w3_i(4), .hidden_neuron_o(hn2_o));
 
