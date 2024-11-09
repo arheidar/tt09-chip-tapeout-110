@@ -34,7 +34,7 @@ always@(*) begin
     gradient = ((x_ext - final_i) << 1);
 
     if ((x_i[0] == 1'b1) || (hidden_val_i !=0)) begin
-        w0_updated_d = w0_i - (gradient * hidden_val_i * 8'b00000010)
+        w0_updated_d = w0_i - (gradient * hidden_val_i * 8'b00000010);
     end else begin
         w0_updated_d = 0;
     end
