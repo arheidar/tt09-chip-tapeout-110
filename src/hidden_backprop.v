@@ -45,14 +45,14 @@ always@(*) begin
         w1_updated_d = 0;
     end
 
-       if ((x_i[2] == 1'b1) || (hidden_val_i !=0)) begin
+    if ((x_i[2] == 1'b1) || (hidden_val_i !=0)) begin
         w2_updated_d = w2_i - (gradient * hidden_val_i * 8'b00000010);
     end else begin
         w2_updated_d = 0;
     end
     
 
-       if ((x_i[3] == 1'b1) || (hidden_val_i !=0)) begin
+    if ((x_i[3] == 1'b1) || (hidden_val_i !=0)) begin
         w3_updated_d = w3_i - (gradient * hidden_val_i * 8'b00000010);
     end else begin
         w3_updated_d = 0;
@@ -64,7 +64,11 @@ reg [8:0] w0_updated_q, w1_updated_q, w2_updated_q, w3_updated_q;
 
 always @(posedge clk_i) begin
     if (!rst_i || zero_weight_reset_i) begin
-        w_updated_q <= 0; 
+        w0_updated_q <= 0; 
+        w1_updated_q <= 0; 
+        w2_updated_q <= 0; 
+        w3_updated_q <= 0; 
+
     end else if (en_i) begin
         w0_updated_q <= {1'b1, w0_updated_d[28:21]};
         w1_updated_q <= {1'b1, w1_updated_d[28:21]};
