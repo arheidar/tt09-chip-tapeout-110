@@ -3,7 +3,7 @@
         input clk_i,
         input rst_i,
         input en_i,
-        //input f0_pass_i,
+        input f0_pass_i,
         //9:0 is fixed point but im not sure what . shit yet ill figure out how to interpret it later
         input [3:0] init_i,
         input [9:0] x0_i,
@@ -81,7 +81,7 @@ end
 always @(posedge clk_i or negedge rst_i) begin
     if (!rst_i) begin
         loss_o <= 0; 
-    end else if (en_i) begin
+    end else if (en_i && (final_d != 0) && (f0_pass_i == 1)) begin
         loss_o <= loss_d;
     end
 end
