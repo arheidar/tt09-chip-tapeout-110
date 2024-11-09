@@ -64,7 +64,7 @@ always @(*) begin
 end
 
 always @(posedge clk_i or negedge rst_i) begin
-    if (!rst_ || zero_final_i) begin
+    if (!rst_i || zero_final_i) begin
         final_q <= 0; 
     end else if (en_i) begin
         final_q <= final_d;

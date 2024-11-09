@@ -6,7 +6,6 @@ module output_backprop
     input clk_i,
     input en_i,
     input rst_i,
-    input final_i,
     input [3:0] x_i,  
     input [22:0] final_i,
     input [9:0] hidden_val_i,
@@ -32,7 +31,7 @@ always@(*) begin
 end
 
 always @(posedge clk_i or negedge rst_i) begin
-    if (!rst || zero_weight_reset_i) begin
+    if (!rst_i || zero_weight_reset_i) begin
         w_update_q <= 0; 
     end else if (en_i) begin
         w_update_q <= {1'b1, w_update_d};

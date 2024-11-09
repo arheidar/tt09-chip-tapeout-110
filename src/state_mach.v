@@ -31,7 +31,7 @@ end
 always @(*) begin
     state_d = state_q;
     zero_loss_o = 0;
-    final_loss_o = 0;
+    zero_final_o = 0;
     zero_weight_update_o = 0;
 
     case (state_q)
