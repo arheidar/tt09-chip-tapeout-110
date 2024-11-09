@@ -42,9 +42,9 @@ always @(*) begin
     case (state_q)
         //init
         3'b000 : begin
-            f0_pass_o = 0;
-            f1_pass_o = 0;
-            b_pass_o = 0;
+            f0_pass_temp = 0;
+            f1_pass_temp = 0;
+            b_pass_temp = 0;
 
             if (init_i == 1'b1) begin
                 state_d = 3'b001;
@@ -54,9 +54,9 @@ always @(*) begin
         
         //f0 pass
         3'b001 : begin
-            f0_pass_o = 1;
-            f1_pass_o = 0;
-            b_pass_o = 0;
+            f0_pass_temp = 1;
+            f1_pass_temp = 0;
+            b_pass_temp = 0;
 
             if (f_end_i == 1'b1) begin
                 state_d = 3'b010;
@@ -65,26 +65,26 @@ always @(*) begin
 
         //b pass
         3'b010 : begin
-            f0_pass_o = 0;
-            f1_pass_o = 0;
-            b_pass_o = 1;
+            f0_pass_temp = 0;
+            f1_pass_temp = 0;
+            b_pass_temp = 1;
 
             if (b_end_i == 1'b1) begin
                 //need to zero loss and final_o 
-                zero_loss_o = 1;
-                zero_final_o = 1;
+                zero_loss_temp = 1;
+                zero_final_temp = 1;
                 state_d = 3'b011;
             end
         end
 
         //f1 pass
         3'b011 : begin
-            f0_pass_o = 0;
-            f1_pass_o = 1;
-            b_pass_o = 0;
+            f0_pass_temp = 0;
+            f1_pass_temp = 1;
+            b_pass_temp = 0;
 
             if (f_end_i == 1'b1) begin
-                zero_weight_update_o = 1;
+                zero_weight_update_temp = 1;
                 state_d = 3'b010;
             end else if (zero_end_check_i) begin
                 state_d = 3'b100;
@@ -93,9 +93,9 @@ always @(*) begin
         
         //end 
          3'b100 : begin
-            f0_pass_o = 0;
-            f1_pass_o = 0;
-            b_pass_o = 0;
+            f0_pass_temp = 0;
+            f1_pass_temp = 0;
+            b_pass_temp = 0;
         end
 
         default: begin
