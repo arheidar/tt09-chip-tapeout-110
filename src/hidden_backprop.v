@@ -60,14 +60,11 @@ always@(*) begin
 end
 
 
-
-
-
 reg [8:0] w0_updated_q, w1_updated_q, w2_updated_q, w3_updated_q;
 
 always @(posedge clk_i) begin
-    if (!rst || zero_weight_reset_i) begin
-        w_update_q <= 0; 
+    if (!rst_i || zero_weight_reset_i) begin
+        w_updated_q <= 0; 
     end else if (en_i) begin
         w0_updated_q <= {1'b1, w0_updated_d[28:21]};
         w1_updated_q <= {1'b1, w1_updated_d[28:21]};
