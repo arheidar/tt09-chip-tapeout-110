@@ -74,14 +74,14 @@ reg [45:0] loss_d;
 assign target_ext = {19'b00000000000000000, init_i};
 
 always @(*) begin
-    inner_fn = (final_d - target_ext);
+    inner_fn = (final_q - target_ext);
     loss_d = inner_fn * inner_fn;
 end
 
 always @(posedge clk_i or negedge rst_i) begin
     if (!rst_i) begin
         loss_o <= 0; 
-    end else if (en_i && (final_d != 0) && (f0_pass_i == 1)) begin
+    end else if (en_i && (final_q != 0) && (f0_pass_i == 1)) begin
         loss_o <= loss_d;
     end
 end
