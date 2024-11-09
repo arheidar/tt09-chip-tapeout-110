@@ -12,7 +12,7 @@ module output_backprop
     input [7:0] w_i, 
     input zero_weight_reset_i,
     output [7:0] w_o,
-    output b_end_o,
+    output b_end_o
     //output trash_handling
 );
 
