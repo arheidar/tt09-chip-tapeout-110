@@ -18,6 +18,7 @@ module output_backprop
 wire [22:0] x_ext;
 reg [23:0] gradient0;
 reg [33:0] gradient1;
+reg [41:0] lr_mult;
 reg [41:0] w_update_d; 
 //extra id bit
 reg [42:0] w_update_q;
@@ -28,8 +29,8 @@ always@(*) begin
     //assign gradient = 2(x_i _) * h
     gradient0 = (2 * (x_ext - final_i));
     gradient1 = gradient0 * hidden_val_i;
-
-    w_update_d = {38'b0, w_i} - (8'b00000010 * gradient1); 
+    lr_mult = (8'b00000010 * gradient1); 
+    w_update_d = {38'b0, w_i} - (lr_mult); 
 end
 
 always @(posedge clk_i or negedge rst_i) begin
