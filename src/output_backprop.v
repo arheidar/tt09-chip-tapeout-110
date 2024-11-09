@@ -30,7 +30,7 @@ always@(*) begin
     gradient0 = (2 * (x_ext - final_i));
     gradient1 = gradient0 * hidden_val_i;
     lr_mult = (8'b00000010 * gradient1); 
-    w_update_d = {38'b0, w_i} - (lr_mult); 
+    w_update_d = {38'b0, x_i} - (lr_mult); 
 end
 
 always @(posedge clk_i or negedge rst_i) begin
