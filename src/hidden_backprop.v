@@ -76,7 +76,7 @@ always @(posedge clk_i) begin
         w3_updated_q <= {1'b1, w3_updated_d[28:21]};
     end
 end
-assign b_end_o = (w0_updated_d[8]) ? 1'b1 : 0;
+assign b_end_o = (w0_updated_q[8]) ? 1'b1 : 0;
 
 assign w0_o = w0_updated_q[7:0]; 
 assign w1_o = w1_updated_q[7:0]; 
