@@ -13,7 +13,7 @@ module output_backprop
     input zero_weight_reset_i,
     output [7:0] w_o,
     output b_end_o,
-    output trash_handling
+    //output trash_handling
 );
 
 wire [22:0] x_ext;
@@ -22,7 +22,7 @@ reg [33:0] gradient1;
 reg [41:0] lr_mult;
 reg [41:0] w_update_d; 
 //extra id bit
-reg [42:0] w_update_q;
+reg [8:0] w_update_q;
 
 assign x_ext = {19'b0000000000000000000, x_i};
 //might just change this to be a backwards pass implemented in each neuron but idk yet
@@ -34,20 +34,24 @@ always@(*) begin
     w_update_d = {34'b0, w_i} - (lr_mult); 
 end
 
+//one extra bit as an identifier
+wire [8:0] w_temp;
+assign w_temp = {1'b1, w_update_d[28:21]};
+
 always @(posedge clk_i) begin
     if (!rst_i || zero_weight_reset_i) begin
         w_update_q <= 0; 
     end else if (en_i) begin
-        w_update_q <= {1'b1, w_update_d};
+        w_update_q <= w_temp; 
     end
 end
 
-assign b_end_o = (w_update_q[42]) ? 1'b1 : 0;
+assign b_end_o = (w_temp[8]) ? 1'b1 : 0;
 
-assign trash_handling = &{w_update_q[41:30], w_update_q[21:0]};
+//assign trash_handling = &{w_update_q[41:30], w_update_q[21:0]};
 
 
-assign w_o = w_update_q[29:22]; 
+assign w_o = w_update_q[7:0]; 
 
 
 
