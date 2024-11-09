@@ -65,7 +65,7 @@ output_backprop obp1 (.clk_i(clk), .en_i(bp_o), .rst_i(rst_n), .final_i(final_o)
 
 wire [7:0] w1_on_i, w1_on_backprop_o;
 assign w1_on_i = (f0p_o) ? 1 : w1_on_backprop_o; 
-output_backprop obp1 (.clk_i(clk), .en_i(bp_o), .rst_i(rst_n), .final_i(final_o), .x_i(ui_in[3:0]), .hidden_val_i(hn1_o), .w_i(on_weights_o[15:8]), .zero_weight_reset_i(zero_weight_update_o), .w_o(w1_on_backprop_o), .b_end_o(b_end1_o));
+output_backprop obp2 (.clk_i(clk), .en_i(bp_o), .rst_i(rst_n), .final_i(final_o), .x_i(ui_in[3:0]), .hidden_val_i(hn1_o), .w_i(on_weights_o[15:8]), .zero_weight_reset_i(zero_weight_update_o), .w_o(w1_on_backprop_o), .b_end_o(b_end1_o));
 
 
 
