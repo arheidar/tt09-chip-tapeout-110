@@ -50,8 +50,19 @@ always @(*) begin
             end
         end
 
+    //end
+        3'b010 : begin
+            f0_pass_o = 0;
+            f1_pass_o = 0;
+            b_pass_o = 0;
+        end
+
+
         default: begin
             state_d = 3'b000;
+            if (f0_end_i == 1'b1) begin
+                state_d = 3'b010;
+            end
         end
     endcase
 
