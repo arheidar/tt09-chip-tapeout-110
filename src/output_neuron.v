@@ -68,7 +68,7 @@ end
 assign final_o = final_q;
 
 wire [22:0] target_ext;
-reg [22:0] inner_fn;
+reg signed [22:0] inner_fn;
 reg [45:0] loss_d;
 
 assign target_ext = {19'b00000000000000000, init_i};
