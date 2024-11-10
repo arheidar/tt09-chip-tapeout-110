@@ -4,7 +4,6 @@
         input rst_i,
         input en_i,
         input f0_pass_i,
-        
         input [3:0] init_i,
         input [9:0] x0_i,
         input [9:0] x1_i,

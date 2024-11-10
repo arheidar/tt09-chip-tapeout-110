@@ -70,6 +70,8 @@ always @(*) begin
 
 end
 
+assign curr_state_o = state_q;
+
 
     
 
