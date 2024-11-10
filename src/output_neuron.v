@@ -4,7 +4,7 @@
         input rst_i,
         input en_i,
         input f0_pass_i,
-        //9:0 is fixed point but im not sure what . shit yet ill figure out how to interpret it later
+        
         input [3:0] init_i,
         input [9:0] x0_i,
         input [9:0] x1_i,
@@ -70,6 +70,7 @@ assign end_check_o = ((final_q == 0) && (init_i == 0));
 
 assign final_o = final_q;
 
+//LOSS FUNCTION 
 wire [22:0] target_ext;
 reg signed [22:0] inner_fn;
 reg [45:0] loss_d;
@@ -89,8 +90,6 @@ always @(posedge clk_i or negedge rst_i) begin
     end
 end
 
-
-//tmrw figure out timing for how to do loss stuff. is way im doing it even gonna work lol
 
 //wire [45:0] loss_check;
 //loss_calc mse_fn (.clk_i(clk_i), .rst_i(rst_i), .en_i (en_i), .target_i(init_i), .predicted_i(final_q), .loss_o(loss_o));

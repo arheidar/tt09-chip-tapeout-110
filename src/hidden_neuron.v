@@ -15,7 +15,7 @@ module hidden_neuron
     output reg [31:0] weights_o
 );
 
-//make sure you handle bit sizes. fixed point is gonna be so ass 
+
 
 reg [7:0] wx3, wx2, wx1, wx0;
 reg [9:0] neuron_calc;

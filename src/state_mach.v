@@ -12,7 +12,8 @@ module state_mach
     //reg?
     output reg f0_pass_o,
     output reg f1_pass_o,
-    output reg b_pass_o
+    output reg b_pass_o,
+    output reg [2:0] curr_state_o
 );
 
 reg [2:0] state_d, state_q;

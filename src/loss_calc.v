@@ -29,7 +29,6 @@ always @(posedge clk_i or negedge rst_i) begin
     end
 end
 
-//assign loss_o = loss_q;
 
 
 endmodule 
