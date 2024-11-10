@@ -9,7 +9,7 @@ You can also include images in this folder and reference them in the markdown. E
 
 ## How it works
 
-The circuit takes in a 4-bit number, with each bit of the input representing an input neuron. It then completes the forward pass for the network, while also calculating the loss function (MSE).
+The circuit takes in a 4-bit number, with each bit of the input representing an input neuron. It then completes the forward pass for the network, while also calculating the loss function (MSE). Network consists of 4 input neurons, 8 hidden neurons, and 1 output neuron. Weights are initialized using a uniform distribution ranging from 0 to 1 (in an unsigned 1.7 fixed-point format).
 
 ## How to test
 
