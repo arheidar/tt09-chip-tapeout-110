@@ -10,17 +10,13 @@ module state_mach
     
 
     //reg?
-    output reg zero_loss_o,
-    output reg zero_final_o,
-    output reg zero_weight_update_o,
     output reg f0_pass_o,
     output reg f1_pass_o,
     output reg b_pass_o
 );
-reg zero_loss_temp, zero_final_temp, zero_weight_update_temp, f0_pass_temp, f1_pass_temp, b_pass_temp;
 
 reg [2:0] state_d, state_q;
-always @(posedge clk_i) begin
+always @(posedge clk_i or negedge rst_i) begin
     if (!rst_i) begin
         state_q <= 3'b000;
     end else if (en_i) begin
@@ -30,20 +26,13 @@ end
 
 always @(*) begin
     state_d = state_q;
-    zero_loss_temp = 0;
-    zero_final_temp = 0;
-    zero_weight_update_temp = 0;
-    f0_pass_temp = 0;
-    f1_pass_temp = 0;
-    b_pass_temp = 0;
-
 
     case (state_q)
         //init
         3'b000 : begin
-            f0_pass_temp = 0;
-            f1_pass_temp = 0;
-            b_pass_temp = 0;
+            f0_pass_o = 0;
+            f1_pass_o = 0;
+            b_pass_o = 0;
 
             if (init_i == 1'b1) begin
                 state_d = 3'b001;
@@ -53,9 +42,9 @@ always @(*) begin
         
         //f0 pass
         3'b001 : begin
-            f0_pass_temp = 1;
-            f1_pass_temp = 0;
-            b_pass_temp = 0;
+            f0_pass_o = 1;
+            f1_pass_o = 0;
+            b_pass_o = 0;
 
             if (end_check_i == 1'b1) begin
                 state_d = 3'b010;
@@ -79,14 +68,6 @@ always @(*) begin
     endcase
 
 end
-
-assign zero_loss_o = zero_loss_temp;
-assign zero_final_o = zero_final_temp;
-assign zero_weight_update_o = zero_weight_update_temp;
-assign f0_pass_o = f0_pass_temp;
-assign f1_pass_o = f1_pass_temp;
-assign b_pass_o = b_pass_temp;
-
 
 
     
