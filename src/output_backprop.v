@@ -46,7 +46,7 @@ always @(posedge clk_i) begin
     end
 end
 
-assign b_end_o = (w_temp[8]) ? 1'b1 : 0;
+assign b_end_o = (w_update_q[8]) ? 1'b1 : 0;
 
 //assign trash_handling = &{w_update_q[41:30], w_update_q[21:0]};
 
