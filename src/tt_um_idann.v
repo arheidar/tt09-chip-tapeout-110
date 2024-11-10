@@ -31,10 +31,11 @@ wire [9:0] hn0_o, hn1_o, hn2_o, hn3_o, hn4_o, hn5_o, hn6_o, hn7_o;
 wire [45:0] loss_o;
 wire [22:0] final_o;
 wire f0p_o, f1p_o, bp_o;
+wire end_check_o;
 
 //assign w0_i = (f1p_o) ? 1 :;
 
-state_mach sm0 (.clk_i(clk), .rst_i(rst_n), .en_i(1), .init_i(ui_in[7]), .f0_end_i(1'b0), .f0_pass_o(f0p_o), .f1_pass_o(f1p_o), .b_pass_o(bp_o));
+state_mach sm0 (.clk_i(clk), .rst_i(rst_n), .en_i(1), .init_i(ui_in[7]), .end_check_i(end_check_o),.f0_end_i(1'b0), .f0_pass_o(f0p_o), .f1_pass_o(f1p_o), .b_pass_o(bp_o));
 
 hidden_neuron hn0 (.clk_i(clk), .rst_i(rst_n), .en_i(f0p_o), .x_i(ui_in[3:0]), .w0_i(1), .w1_i(1), .w2_i(1), .w3_i(1), .hidden_neuron_o(hn0_o));
 
@@ -52,7 +53,7 @@ hidden_neuron hn6 (.clk_i(clk), .rst_i(rst_n), .en_i(f0p_o), .x_i(ui_in[3:0]), .
 
 hidden_neuron hn7 (.clk_i(clk), .rst_i(rst_n), .en_i(f0p_o), .x_i(ui_in[3:0]), .w0_i(1), .w1_i(1), .w2_i(1), .w3_i(1), .hidden_neuron_o(hn7_o));
 
-output_neuron on0 (.clk_i(clk), .rst_i(rst_n), .en_i(f0p_o), .f0_pass_i(f0p_o), .init_i(ui_in[3:0]), .x0_i(hn0_o), .x1_i(hn1_o), .x2_i(hn2_o), .x3_i(hn3_o), .x4_i(hn4_o), .x5_i(hn5_o), .x6_i(hn6_o), .x7_i(hn7_o), .w0_i(1), .w1_i(2), .w2_i(3), .w3_i(4), .w4_i(5), .w5_i(6), .w6_i(7), .w7_i(8), .loss_o(loss_o), .final_o(final_o));
+output_neuron on0 (.clk_i(clk), .rst_i(rst_n), .en_i(f0p_o), .f0_pass_i(f0p_o), .init_i(ui_in[3:0]), .x0_i(hn0_o), .x1_i(hn1_o), .x2_i(hn2_o), .x3_i(hn3_o), .x4_i(hn4_o), .x5_i(hn5_o), .x6_i(hn6_o), .x7_i(hn7_o), .w0_i(1), .w1_i(2), .w2_i(3), .w3_i(4), .w4_i(5), .w5_i(6), .w6_i(7), .w7_i(8), .end_check_o(end_check_o).loss_o(loss_o), .final_o(final_o));
 
  
 

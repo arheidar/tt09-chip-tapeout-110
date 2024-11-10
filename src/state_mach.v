@@ -6,6 +6,7 @@ module state_mach
     input en_i,
     input init_i,
     input f0_end_i,
+    input end_check_i,
     
 
     //reg?
@@ -45,7 +46,7 @@ always @(*) begin
             f1_pass_o = 0;
             b_pass_o = 0;
 
-            if (f0_end_i == 1'b1) begin
+            if (end_check_i == 1'b1) begin
                 state_d = 3'b010;
             end
         end

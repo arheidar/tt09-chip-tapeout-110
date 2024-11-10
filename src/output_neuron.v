@@ -27,7 +27,8 @@
         //output f0_end_o, 
         //output f1_end_o,
         output reg  [45:0] loss_o,
-        output reg [22:0] final_o
+        output reg [22:0] final_o,
+        output reg end_check_o
     );
 
 wire [9:0] w0_ext, w1_ext, w2_ext, w3_ext, w4_ext, w5_ext, w6_ext, w7_ext;
@@ -64,6 +65,8 @@ always @(posedge clk_i or negedge rst_i) begin
         final_q <= final_d;
     end
 end
+
+assign end_check_o = ((final_q == 0) &&  == (init_i == 0));
 
 assign final_o = final_q;
 
