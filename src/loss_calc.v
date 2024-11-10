@@ -21,7 +21,7 @@ always @(*) begin
     loss_d = inner_fn * inner_fn;
 end
 
-always @(posedge clk_i or negedge rst_i) begin
+always @(posedge clk_i) begin
     if (!rst_i) begin
         loss_o <= 0; 
     end else if (en_i) begin

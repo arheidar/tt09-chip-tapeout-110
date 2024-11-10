@@ -3,7 +3,6 @@
         input clk_i,
         input rst_i,
         input en_i,
-        input f0_pass_i,
         input [3:0] init_i,
         input [9:0] x0_i,
         input [9:0] x1_i,
@@ -31,7 +30,6 @@
     );
 
 wire [9:0] w0_ext, w1_ext, w2_ext, w3_ext, w4_ext, w5_ext, w6_ext, w7_ext;
-//idk if 21 bits is right, maybe ask jason
 reg [22:0] final_d, final_q; 
 
 //unsure if yosys will zero extend when i do multiplication, so im doing this to be safe 
@@ -47,14 +45,6 @@ assign w7_ext = {2'b0, w7_i};
 always @(*) begin
     final_d = (x0_i * w0_ext) + (x1_i * w1_ext) +  (x2_i * w2_ext) + (x3_i * w3_ext) +  (x4_i * w4_ext) + (x5_i * w5_ext) + (x6_i * w6_ext) + (x7_i * w7_ext); 
     
-    // if ((loss_o > 0) && (f0_pass_i == 1)) begin
-    //     f0_end_o = 1;
-    // end else if ((loss_o == 0) && (f1_pass_i == 1))
-    //     f1_end_o = 1;
-    // else begin
-    //     f0_end_o = 0;
-    //     f1_end_o = 0;
-    // end
 end
 
 always @(posedge clk_i or negedge rst_i) begin
@@ -81,10 +71,10 @@ always @(*) begin
     loss_d = inner_fn * inner_fn;
 end
 
-always @(posedge clk_i or negedge rst_i) begin
+always @(posedge clk_i) begin
     if (!rst_i) begin
         loss_o <= 0; 
-    end else if (en_i && (final_q != 0) && (f0_pass_i == 1)) begin
+    end else if (en_i && (final_q != 0)) begin
         loss_o <= loss_d;
     end
 end

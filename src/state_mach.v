@@ -2,13 +2,11 @@ module state_mach
 (
     input clk_i,
     input rst_i,
-    //enable will just be ena from top module
+    //enable will just be 1
     input en_i,
     input init_i,
     input f0_end_i,
     input end_check_i,
-    
-
     //reg?
     output reg f0_pass_o,
     output reg f1_pass_o,
