@@ -8,8 +8,6 @@ module state_mach
     input f_end_i,
     input b_end_i,
     input zero_end_check_i,
-    
-
     //reg?
     output reg zero_loss_o,
     output reg zero_final_o,
