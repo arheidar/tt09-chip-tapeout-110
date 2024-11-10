@@ -39,9 +39,9 @@ wire [15:0] on_weights_o;
 //state_mach sm0 (.clk_i(clk), .rst_i(rst_n), .en_i(1), .init_i(ui_in[7]), .f_end_i(1'b0), .f0_pass_o(f0p_o), .f1_pass_o(f1p_o), .b_pass_o(bp_o));
 state_mach state_mach_inst (.clk_i(clk), .rst_i(rst_n), .en_i(1), .init_i(ui_in[7]), .f_end_i(fpass_over_o), .b_end_i(b_end0_o & b_end1_o), .zero_end_check_i(zero_end_check_o), .zero_loss_o(zero_loss_o), .zero_final_o(zero_final_o), .zero_weight_update_o(zero_weight_update_o), .f0_pass_o(f0p_o), .f1_pass_o(f1p_o), .b_pass_o(bp_o));
 
-hidden_neuron hn0 (.clk_i(clk), .rst_i(rst_n), .en_i(f0p_o | f1p_o), .x_i(ui_in[3:0]), .w0_i(1), .w1_i(2), .w2_i(3), .w3_i(4), .hidden_neuron_o(hn0_o));
+hidden_neuron hn0 (.clk_i(clk), .rst_i(rst_n), .en_i(f0p_o | f1p_o), .x_i(ui_in[3:0]), .w0_i(8'b01100010), .w1_i(8'b01111100), .w2_i(8'b01111101), .w3_i(8'b01101010), .hidden_neuron_o(hn0_o));
 
-hidden_neuron hn1 (.clk_i(clk), .rst_i(rst_n), .en_i(f0p_o | f1p_o), .x_i(ui_in[3:0]), .w0_i(5), .w1_i(6), .w2_i(7), .w3_i(4), .hidden_neuron_o(hn1_o));
+hidden_neuron hn1 (.clk_i(clk), .rst_i(rst_n), .en_i(f0p_o | f1p_o), .x_i(ui_in[3:0]), .w0_i(8'b01111110), .w1_i(8'b01010110), .w2_i(8'b00110101), .w3_i(8'b00100011), .hidden_neuron_o(hn1_o));
 
 // hidden_neuron hn2 (.clk_i(clk), .rst_i(rst_n), .en_i(f0p_o | f1p_o), .x_i(ui_in[3:0]), .w0_i(1), .w1_i(2), .w2_i(3), .w3_i(4), .hidden_neuron_o(hn2_o));
 
@@ -60,11 +60,11 @@ output_neuron on0(.clk_i(clk), .rst_i(rst_n), .en_i(f0p_o | f1p_o), .zero_loss_i
 
 //backprop hidden-to-out weight0
 wire [7:0] w0_on_i, w0_on_backprop_o;
-assign w0_on_i = (f0p_o) ? 5 : w0_on_backprop_o; 
+assign w0_on_i = (f0p_o) ? 8'b01101110 : w0_on_backprop_o; 
 output_backprop obp1 (.clk_i(clk), .en_i(bp_o), .rst_i(rst_n), .final_i(final_o), .x_i(ui_in[3:0]), .hidden_val_i(hn0_o), .w_i(on_weights_o[7:0]), .zero_weight_reset_i(zero_weight_update_o), .w_o(w0_on_backprop_o), .b_end_o(b_end0_o));
 
 wire [7:0] w1_on_i, w1_on_backprop_o;
-assign w1_on_i = (f0p_o) ? 7 : w1_on_backprop_o; 
+assign w1_on_i = (f0p_o) ? 8'b01001000 : w1_on_backprop_o; 
 output_backprop obp2 (.clk_i(clk), .en_i(bp_o), .rst_i(rst_n), .final_i(final_o), .x_i(ui_in[3:0]), .hidden_val_i(hn1_o), .w_i(on_weights_o[15:8]), .zero_weight_reset_i(zero_weight_update_o), .w_o(w1_on_backprop_o), .b_end_o(b_end1_o));
 
 
