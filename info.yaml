@@ -1,6 +1,6 @@
 # Tiny Tapeout project information
 project:
-  title:        "Simple identity mapping ANN"      # Project title
+  title:        "Forward Pass Network for Simple ANN"      # Project title
   author:       "Arian Heidari"      # Your name
   discord:      ""      # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
   description:  "Simple ANN that takes in a 4bit value, and trains the output to mirror the input"      # One line description of what your project does
