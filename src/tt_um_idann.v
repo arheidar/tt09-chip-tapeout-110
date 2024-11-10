@@ -76,7 +76,7 @@ output_neuron on0 (.clk_i(clk), .rst_i(rst_n), .en_i(f0p_o),  .init_i(ui_in[3:0]
 
 //max value output can take on with current weights is 10 bits!
 assign uo_out = final_o[7:0];
-assign uio_out = final_o[9:8];
+assign uio_out[1:0] = final_o[9:8];
 assign uio_out[7:5] = curr_state_o;
 
 
