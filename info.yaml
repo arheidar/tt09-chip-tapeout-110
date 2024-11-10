@@ -22,7 +22,6 @@ project:
     - "output_neuron.v"
     - "state_mach.v"
     - "output_backprop.v"
-    - "hidden_backprop.v"
 
 # The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
 pinout:
