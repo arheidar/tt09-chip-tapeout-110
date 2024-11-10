@@ -29,11 +29,9 @@
         //output fwrd_done_o,
         //output f0_end_o, 
         //output f1_end_o,
-        //output reg  [37:0] loss_o,
-        output reg [18:0] final_o,
-        output fpass_over_o,
-        output zero_end_check_o,
-        output reg [15:0] weights_o
+        output reg  [45:0] loss_o,
+        output reg [22:0] final_o,
+        output reg end_check_o
     );
 
 //wire [9:0] w0_ext, w1_ext, w2_ext, w3_ext, w4_ext, w5_ext, w6_ext, w7_ext;
@@ -71,15 +69,13 @@ always @(posedge clk_i) begin
     end
 end
 
+assign end_check_o = ((final_q == 0) && (init_i == 0));
+
 assign final_o = final_q;
 
-// we can just skip loss calculation
-assign zero_end_check_o = ((final_o == 0) && (init_i == 0)) ? 1'b1 : 1'b0;
-
-//LOSS CHECK
-wire [18:0] target_ext;
-reg [18:0] inner_fn;
-reg [37:0] loss_d, loss_o;
+wire [22:0] target_ext;
+reg signed [22:0] inner_fn;
+reg [45:0] loss_d;
 
 assign target_ext = {15'b00000000000000000, init_i};
 
