@@ -66,7 +66,7 @@ always @(posedge clk_i or negedge rst_i) begin
     end
 end
 
-assign end_check_o = ((final_q == 0) &&  == (init_i == 0));
+assign end_check_o = ((final_q == 0) && (init_i == 0));
 
 assign final_o = final_q;
 
